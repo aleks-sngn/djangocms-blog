@@ -14,6 +14,8 @@ djangocms-blog
 
 A djangoCMS 3 blog application.
 
+This is fork app from https://github.com/nephila/django-cms-blog
+
 Still experimental and untested. You are welcome if you want to try it; if
 you encounter any issue, please open an issue.
 
@@ -55,6 +57,7 @@ Features
 * Placeholder content editing
 * Frontend editing using django CMS 3.0 frontend editor
 * Multilingual support using django-parler
+* Support your own User model (for Django 1.5 and later)
 
 .. image:: https://d2weczhvl823v0.cloudfront.net/nephila/djangocms-blog/trend.png
    :alt: Bitdeli badge

@@ -13,6 +13,7 @@ from filer.fields.image import FilerImageField
 from parler.models import TranslatableModel, TranslatedFields
 from parler.managers import TranslationManager
 from taggit_autosuggest.managers import TaggableManager
+from django.conf import settings as globalsettings
 
 from . import settings
 from .managers import GenericDateTaggedManager
@@ -61,7 +62,7 @@ class Post(TranslatableModel):
     """
     Blog post
     """
-    author = models.ForeignKey(User, verbose_name=_('Author'), null=True, blank=True,
+    author = models.ForeignKey(globalsettings.AUTH_USER_MODEL, verbose_name=_('Author'), null=True, blank=True,
                                related_name='djangocms_blog_author')
 
     date_created = models.DateTimeField(auto_now_add=True)
@@ -167,7 +168,7 @@ class LatestPostsPlugin(CMSPlugin):
 
 
 class AuthorEntriesPlugin(CMSPlugin):
-    authors = models.ManyToManyField(User, verbose_name=_('Authors'),
+    authors = models.ManyToManyField(globalsettings.AUTH_USER_MODEL, verbose_name=_('Authors'),
                                      limit_choices_to={'post_set__publish': True}
                                      )
     latest_posts = models.IntegerField(_(u'Articles'), default=settings.BLOG_LATEST_POSTS,
